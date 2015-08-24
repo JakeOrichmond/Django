@@ -1,0 +1,9 @@
+<h1>{{ type.type_text }}</h1>
+
+<ul>
+{% for strain in type.strain_set.all %}
+    <li>{{ strain.strain_text }} -- {{ strain.votes }} vote{{ strain.votes|pluralize}}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'tfd_app:detail' type.id %}">Vote again?</a>

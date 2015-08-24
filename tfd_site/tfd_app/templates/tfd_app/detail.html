@@ -1,0 +1,11 @@
+<h1>{{ type.type_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'tfd_app:vote' type.id %}" method="post'>"
+{% csrf_token %}
+{% for strain in type.choice_set.all %}
+    <input type="radio" name="strain" id="strain{{ forloop.counter }}" value="{{ strain.id}}"/>
+    <label for="strain{{ forloop.counter }}">{{ strain.strain_text}}</label><br/>
+{% endfor %}
+<input type="submit" value="Vote"/>
+</form>

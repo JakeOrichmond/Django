@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'tfd_app/style.css' %}"/>
+
+{% if latest_type_list %}
+	<ul>
+	{% for type in latest_type_list %}
+		<li><a href="{% url 'tfd_app:detail' type.id %}">{{ type.type_text }}</a></li>
+	{% endfor %}
+	</ul>
+	{% else %}
+		<p>No Types are available.</p>
+	{% endif %}
